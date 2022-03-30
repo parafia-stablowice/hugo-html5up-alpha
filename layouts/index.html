@@ -49,9 +49,11 @@
                         <div class="features-row">
                             {{ range .items }}
                             <section>
-                                <span class="icon solid major {{ .icon }} {{ .accent }}"></span>
-                                <h3>{{ .title }}</h3>
-                                <p>{{ .content }}</p>
+                                {{ if .url }}<a href="{{ .url | absURL }}"><div>{{ end }}
+                                    <span class="icon solid major {{ .icon }} {{ .accent }}"></span>
+                                    <h3>{{ .title }}</h3>
+                                    <p>{{ .content }}</p>
+                                {{ if .url }}</div></a>{{ end }}
                             </section>
                             {{ end }}
                         </div>

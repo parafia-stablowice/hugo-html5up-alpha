@@ -3,9 +3,8 @@
     <h1>{{ with .Site.Data.globalheader.title }}{{ . | markdownify }}{{else}}{{ .Site.Title }}{{end}}</h1>
     <nav id="nav">
         <ul>
-            <li><a href="{{ .Site.BaseURL }}">Home</a></li>
             <li>
-                <a href="#" class="icon solid fa-angle-down">Layouts</a>
+                <a href="#" class="icon solid fa-angle-down">Menu</a>
                 <ul>
                     {{- range .Site.Menus.main -}}
                         {{- if .HasChildren -}}

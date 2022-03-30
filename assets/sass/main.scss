@@ -1388,7 +1388,7 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 		background-repeat:		repeat,							no-repeat;
 		background-size:		auto,							cover;
 		color: #fff;
-		padding: 12em 0 20em 0;
+		padding: 4em 0 12em 0;
 		text-align: center;
 
 		:last-child {
