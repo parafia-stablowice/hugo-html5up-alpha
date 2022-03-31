@@ -41,6 +41,34 @@
                 {{ end }}
                 {{ end }}
 
+                <!-- Posts -->
+                {{ if .Site.Data.homepage.blog.enable }}
+                {{ with $blogSettings := .Site.Data.homepage.blog }}
+                  {{ with .header }}
+                  <header class="major">
+                      <h2>{{ . }}</h2>
+                  </header>
+                  {{ end }}
+                  <div class="row">
+                      {{ range first .postCount (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+                          <div class="col-6 col-12-narrower">
+                              <section class="box special">
+                                  {{ with partial "bannerURL" . }}
+                                  <span class="image featured"><img src="{{ . }}" alt="" /></span>
+                                  {{ end }}
+                                  {{ .Params.type_name }}
+                                  <h3>{{ .Title }}</h3>
+                                  {{ with .Date }}<p>{{ .Format "2.01.2006" }}</p>{{ end }}
+                                  <ul class="actions special">
+                                      <li><a href="{{ .Permalink }}" class="button alt">{{ $blogSettings.buttonText }} </a></li>
+                                  </ul>
+                              </section>
+                          </div>
+                      {{ end }}
+                  </div>
+                {{ end }}
+                {{ end }}
+
                 <!-- Features -->
                 {{ if .Site.Data.homepage.features.enable }}
                 {{ with .Site.Data.homepage.features }}
@@ -59,38 +87,6 @@
                         </div>
                         {{ end }}
                     </section>
-                {{ end }}
-                {{ end }}
-
-                <!-- Posts -->
-                {{ if .Site.Data.homepage.blog.enable }}
-                {{ with $blogSettings := .Site.Data.homepage.blog }}
-                  {{ with .header }}
-                  <header class="major">
-                      <h2>{{ . }}</h2>
-                  </header>
-                  {{ end }}
-                  <div class="row">
-                      {{ range first .postCount (where site.RegularPages "Type" "in" site.Params.mainSections) }}
-                          <div class="col-6 col-12-narrower">
-                              <section class="box special">
-                                  {{ with partial "bannerURL" . }}
-                                  <span class="image featured"><img src="{{ . }}" alt="" /></span>
-                                  {{ end }}
-                                  <h3>{{ .Title }}</h3>
-                                  {{ with .Date }}<p>{{ .Format "Jan 2, 2006" }}</p>{{ end }}
-                                  {{ with .Description }}
-                                  <p>{{ . }}</p>
-                                  {{ else }}
-                                  <p>{{ .Summary }}</p>
-                                  {{ end }}
-                                  <ul class="actions special">
-                                      <li><a href="{{ .Permalink }}" class="button alt">{{ $blogSettings.buttonText }} </a></li>
-                                  </ul>
-                              </section>
-                          </div>
-                      {{ end }}
-                  </div>
                 {{ end }}
                 {{ end }}
             </section>
