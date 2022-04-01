@@ -11,11 +11,9 @@
                   <span class="image featured"><img src="{{ . }}" alt="" /></span>
                   {{ end }}
                   <h3>{{ .Title }}</h3>
-                  {{ with .Date }}<p>{{ .Format "Jan 2, 2006" }}</p>{{ end }}
+                  {{ with .Date }}<p>{{ .Format "2.01.2006" }}</p>{{ end }}
                   {{ with .Description }}
                   <p>{{ . }}</p>
-                  {{ else }}
-                  <p>{{ .Summary }}</p>
                   {{ end }}
                   <ul class="actions special">
                       <li><a href="{{ .Permalink }}" class="button alt">{{ $blogSettings.buttonText }} </a></li>
